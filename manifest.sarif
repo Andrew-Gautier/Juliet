@@ -1,0 +1,96 @@
+{
+  "version": "2.1.0",
+  "$schema": "https:
+  "runs": [
+    {
+      "properties": {
+        "id": 501077,
+        "version": "1.0.0",
+        "type": "source code",
+        "status": "candidate",
+        "submissionDate": "2021-11-21",
+        "language": "php",
+        "author": "Felix Schuckert",
+        "description": "Source: _GET\nSanitization: nosanitization\nDataflow: global_variable\nContext: xss_plain\nSink: echo_func",
+        "state": "bad"
+      },
+      "tool": {
+        "driver": {
+          "name": "SARD - SAMATE",
+          "fullName": "Software Assurance Reference Dataset Project",
+          "informationUri": "https:
+          "version": "5.0.0",
+          "organization": "NIST",
+          "supportedTaxonomies": [
+            {
+              "name": "CWE",
+              "index": 0
+            }
+          ]
+        }
+      },
+      "artifacts": [
+        {
+          "location": {
+            "uri": "src/sample.php"
+          },
+          "length": 612,
+          "sourceLanguage": "php",
+          "hashes": {
+            "sha-256": "ef4465ed8ab922912a877fc32bdd81fc521dbab9026131fe36332eeb26379d74"
+          }
+        }
+      ],
+      "taxonomies": [
+        {
+          "name": "CWE",
+          "version": "4.6",
+          "informationUri": "https:
+          "downloadUri": "https:
+          "organization": "MITRE",
+          "shortDescription": {
+            "text": "The MITRE Common Weakness Enumeration"
+          },
+          "isComprehensive": false,
+          "taxa": [
+            {
+              "id": "79",
+              "name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+            }
+          ]
+        }
+      ],
+      "results": [
+        {
+          "ruleId": "CWE-79",
+          "message": {
+            "text": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/sample.php",
+                  "index": 0
+                },
+                "region": {
+                  "startLine": 41
+                }
+              }
+            }
+          ],
+          "taxa": [
+            {
+              "toolComponent": {
+                "name": "CWE",
+                "index": 0
+              },
+              "id": "79",
+              "index": 0
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
