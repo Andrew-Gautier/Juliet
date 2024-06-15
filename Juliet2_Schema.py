@@ -29,6 +29,16 @@ class VLW(Base):
     vlw_content = Column(Text)
     offset = Column(Integer)
     model_id = Column(Integer)    
+    
+class VLW2(Base):
+    __tablename__ = 'VLW2'
+    file_name = Column(String, primary_key=True)
+    cwe = Column(String)
+    cwe_int = Column(Integer)
+    vulnerability_location = Column(Integer)
+    vlw_content = Column(Text)
+    offset = Column(Integer)
+    model_id = Column(Integer)    
 
 Base.metadata.create_all(engine)
 
