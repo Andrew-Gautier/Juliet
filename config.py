@@ -4,7 +4,7 @@ from Juliet2_Schema import Cases, VLW  # Import your SQLAlchemy models
 import os
 
 
-DATABASE_FILE = '/users/aeg00011/Juliet/Juliet2.db'
+DATABASE_FILE = '/users/aeg00011/scratch/Juliet2.db'
 
 DATABASE_URL = f'sqlite:///{DATABASE_FILE}'
 engine = create_engine(DATABASE_URL)
