@@ -1,4 +1,4 @@
-from Juliet2_Schema import Cases, engine, VLW
+from Juliet2_Schema import Cases, engine, VLW,VLW2
 from sqlalchemy import and_, func, bindparam, text, String, Integer, Text
 from sqlalchemy.orm import relationship, sessionmaker
 import random
@@ -8,22 +8,11 @@ session = Session()
 
 # Query the database and get a list of Cases objects for each CWE
 records = session.query(Cases).all()
+def get_relative_location(vulnerable_location, start, end):
+    # Adjust the vulnerable location to be relative to the start of the window
+    relative_location = vulnerable_location - start
+    return relative_location
 
-
-
-def update_locations(vulnerable_locations, num_lines_before, window_size):
-    # Update the vulnerable locations to include the surrounding lines
-    updated_locations = []
-    for location in vulnerable_locations:
-        # Adjust the location based on the window size
-        adjusted_location = location - num_lines_before
-        # Ensure the adjusted location is within the window
-        if adjusted_location < 0:
-            adjusted_location = 0
-        elif adjusted_location >= window_size:
-            adjusted_location = window_size - 1
-        updated_locations.append(adjusted_location)
-    return updated_locations
 
 # This takes a parameter window size, and returns two random  values for num lines before + after
 def get_random_values(window_size):
@@ -40,9 +29,7 @@ for record in records:
         model_id = record.model_id
         codeFile = record.file_content
         
-        vulnerable_lines = []
-        vulnerable_lines.extend(int(v) for v in record.vulnerability_location.split(","))
-        #print(vulnerable_lines)
+        vulnerable_location = int(record.vulnerability_location)
     
         lines = codeFile.split("\n")
         vlw_lines = []
@@ -50,46 +37,36 @@ for record in records:
         updated_locations = []
     
         num_lines_before, num_lines_after = get_random_values(window_size)
-        updated_locations = update_locations(vulnerable_lines, num_lines_before, window_size)
-        print(updated_locations)
-        cwe_int = 0  # Initialize cwe_int to handle cases with no vulnerabilities
-        offset = 0  # Initialize offset
-        print("Scanning through records...")
         
+        
+        print("Scanning through records...")
         for line_number, line_content in enumerate(lines):
-            if line_number in vulnerable_lines:
+            if line_number == vulnerable_location:
                 start = max(0, line_number - num_lines_before)  # Start of the window
                 end = min(len(lines), line_number + num_lines_after + 1)  # End of the window
-                vlw_lines.extend(lines[start:end])  # Append the lines in the window to vlw_lines
+                vlw_lines.extend(lines[start:end])
+                
+                # Append the lines in the window to vlw_lines
+                relative_location = get_relative_location(vulnerable_location, start, end)
+                updated_locations.append(relative_location)
 
-            
         delimiter = '\n'  # Use newline as the delimiter to preserve the original line breaks
         vlw_lines_str = delimiter.join(vlw_lines)
-            
+        # Now Call updated location    
         delimiter = ','  # Choose a suitable delimiter
-        
         vulnerable_lines_str = delimiter.join(map(str, updated_locations))
             
         print("Ready to insert...")
-        session.add(VLW(
+        session.add(VLW2(
             file_name=vlw_name,
             cwe=vlw_cwe,
-            cwe_int=cwe_int,
+            cwe_int=0,  # Initialize cwe_int to handle cases with no vulnerabilities
             vulnerability_location=vulnerable_lines_str,
             vlw_content=vlw_lines_str,
-            offset=offset,
+            offset=0,  # Initialize offset
             model_id=model_id
         ))
 
-    # Commit the changes
 session.commit()               
     
-session.close()          
-                    
-
-
-
-
-
-
-        
+session.close()
