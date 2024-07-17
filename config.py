@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from Juliet2_Schema import Cases, VLW  # Import your SQLAlchemy models
+from Juliet2_Schema import Cases, VLW, VLW2  # Import your SQLAlchemy models
 import os
 
 
