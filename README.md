@@ -1,8 +1,10 @@
 # Juliet
- 
-Juliet is a sequence to sequence encoder decoder model aiming to incorporate NMT archiectures to positionally encode patterns which can be used to aid in the classification of vulnerable segments of code. 
+This is the repository for the NASA West Virginia Space Grant Consortium 2023-2024 funded research grant entitled: _Semantic Positional Encoding for Better Vulnerability Detection_ . The final report submitted to NASA is available here for further details about the motivation for this project. 
 
-Juliet has been trained using a novel dataset collected from NIST, is mutli-lingual and represents a large variety of semantically connected code files containing over 20 CWE's. We seek to publish this set of positional encodings as an aid for those wishing to apply language modeling techniques to improve vulnerability forecasting. 
+Juliet is a sequence to sequence (Seq2Seq) encoder decoder classification model inspired by an established deep learning architecture, Long-Short-Term-Memory(LSTM) based Recurrent Neural Networks (RNN). Juliet was created out of a desire for proof of concept that natural language modeling techniques can also be used to learn sequential positioning features from source code. In particular we hope that this will be a proof of concept for creating more robust static analysis tools for vulnerability detection.  This first version of Juliet with a self-attention layer has achieved early validation results of a AUROC score of 94% in an experiment for binary line classifications.
+![attention_AUC-ROC](https://github.com/user-attachments/assets/3c541bc0-3448-4ddd-aa91-2f84a3129d93)
+![attention_loss_plot](https://github.com/user-attachments/assets/161c1b18-58dc-4f38-93fb-c4bced7761a0)
 
-This will be updated upon completion of the NASA sponsored research fellowship, the WVSGC, in 2024, a full report of which will be included. 
+I complied the Juliet corpus used in training these model from the Juliet test suites accessed from the NIST Software Assurance Reference Dataset [https://samate.nist.gov/SARD/](url). 
 
+A special thanks to the aix-coder-7b team for allowing their model weights and tokenizer to be used for research endeavors like this. [https://github.com/aixcoder-plugin/aiXcoder-7B](url)
