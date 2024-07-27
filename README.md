@@ -5,6 +5,6 @@ Juliet is a sequence to sequence (Seq2Seq) encoder decoder classification model 
 ![attention_AUC-ROC](https://github.com/user-attachments/assets/3c541bc0-3448-4ddd-aa91-2f84a3129d93)
 ![attention_loss_plot](https://github.com/user-attachments/assets/161c1b18-58dc-4f38-93fb-c4bced7761a0)
 
-I complied the Juliet corpus used in training these model from the Juliet test suites accessed from the NIST Software Assurance Reference Dataset [https://samate.nist.gov/SARD/](url). 
+I complied the Juliet corpus used in training these model from the Juliet test suites accessed from the NIST Software Assurance Reference Dataset [https://samate.nist.gov/SARD/](url). In 2024 I intend to publicly release this dataset to be used for langauge modeling researchers looking to fine tune models for vulnerability identification.
 
 A special thanks to the aix-coder-7b team for allowing their model weights and tokenizer to be used for research endeavors like this. [https://github.com/aixcoder-plugin/aiXcoder-7B](url)
