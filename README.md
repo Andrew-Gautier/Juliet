@@ -8,6 +8,6 @@ Juliet is a sequence to sequence (Seq2Seq) encoder decoder classification model 
 | --- | --- |
 | ![image](https://github.com/user-attachments/assets/ba9fea1e-f27a-4d4e-88b7-66dad33ea9e8) | |
 
-I complied the Juliet corpus used in training these model from the Juliet test suites accessed from the NIST Software Assurance Reference Dataset [https://samate.nist.gov/SARD/](url). Shown above are the 10 largest subgroups of CWE's in the corpus, and the entire corpus contains over 65,000 program files and 12 million lines of code.  In 2024 I intend to publicly release this dataset to be used for language modeling researchers looking to fine tune models for vulnerability identification.
+I complied the Juliet corpus used in training these model from the Juliet test suites accessed from the NIST Software Assurance Reference Dataset [https://samate.nist.gov/SARD/](url). Shown above are the 10 largest subgroups of CWE's in the corpus, and the entire corpus contains over 65,000 program files and 12 million lines of code in three languages, C, C++, and Java.  In 2024 I intend to publicly release this dataset to be used for language modeling researchers looking to fine tune models for vulnerability identification.
 
 A special thanks to the aix-coder-7b team for allowing their model weights and tokenizer to be used for research endeavors like this. [https://github.com/aixcoder-plugin/aiXcoder-7B](url)
